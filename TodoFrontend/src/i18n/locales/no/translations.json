@@ -1,0 +1,21 @@
+{
+  "new-todo": "Nytt gjøremål",
+  "language": "Språk",
+  "norwegian": "Norsk",
+  "english": "Engelsk",
+  "dark-mode": "Mørkt modus",
+  "light-mode": "Lyst modus",
+  "description": "Beskrivelse",
+  "create": "Lagre",
+  "update": "Oppdater",
+  "cancel": "Avbryt",
+  "todo-list": "Gjøremålsliste",
+  "filter": "Filtrer",
+  "show-all": "Vis alle",
+  "show-non-complete": "Vis ufullførte",
+  "done": "Fullført",
+  "undone": "Ufullført",
+  "todo-complete": "Gjøremål fullført",
+  "edit": "Rediger",
+  "delete": "Slett"
+}

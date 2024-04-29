@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { TextField, Button } from "@mui/material";
+
+import { useTranslation } from "react-i18next";
+import "./i18n/config.js";
+
 function CreateTodo({ data, onCreate, editingId, setEditingId, onUpdate }) {
   const [formData, setFormData] = useState({
     id: "",
     description: "",
     todoComplete: false,
   });
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (editingId === null) {
@@ -42,7 +48,7 @@ function CreateTodo({ data, onCreate, editingId, setEditingId, onUpdate }) {
   };
   return (
     <>
-      <h2>New Todo</h2>
+      <h2>{t("new-todo")}</h2>
       <form
         onSubmit={handleSubmit}
         style={{
@@ -54,14 +60,14 @@ function CreateTodo({ data, onCreate, editingId, setEditingId, onUpdate }) {
       >
         <TextField
           sx={{ ml: 1 }}
-          label="Description"
+          label={t("description")}
           name="description"
-          placeholder="Description"
+          placeholder={t("description")}
           value={formData.description}
           onChange={handleFormChange}
         />
         <Button sx={{ mr: 1 }} variant="contained" type="submit">
-          {editingId === null ? "Create" : "Update"}
+          {editingId === null ? t("create") : t("update")}
         </Button>
         {editingId !== null && (
           <Button
@@ -70,7 +76,7 @@ function CreateTodo({ data, onCreate, editingId, setEditingId, onUpdate }) {
             color="secondary"
             onClick={handleCancelEdit}
           >
-            Cancel
+            {t("cancel")}
           </Button>
         )}
       </form>

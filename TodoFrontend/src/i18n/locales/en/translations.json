@@ -1,0 +1,21 @@
+{
+  "new-todo": "New Todo",
+  "language": "Lanuage",
+  "norwegian": "Norwegian",
+  "english": "English",
+  "dark-mode": "Dark mode",
+  "light-mode": "Light mode",
+  "description": "Description",
+  "create": "Create",
+  "update": "Update",
+  "cancel": "Cancel",
+  "todo-list": "Todo List",
+  "filter": "Filter",
+  "show-all": "Show all",
+  "show-non-complete": "Show non complete",
+  "done": "Done",
+  "undone": "Undone",
+  "todo-complete": "Todo complete",
+  "edit": "Edit",
+  "delete": "Delete"
+}

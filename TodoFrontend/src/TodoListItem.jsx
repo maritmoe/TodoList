@@ -2,7 +2,12 @@ import PropTypes from "prop-types";
 import { ListItem, ListItemText, IconButton, Switch } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 
+import { useTranslation } from "react-i18next";
+import "./i18n/config.js";
+
 function TodoListItem({ item, onUpdate, onDelete, setEditingId }) {
+  const { t } = useTranslation();
+
   const handleToggleComplete = (event, item) => {
     const { name, checked } = event.target;
     onUpdate({ ...item, [name]: checked });
@@ -21,12 +26,12 @@ function TodoListItem({ item, onUpdate, onDelete, setEditingId }) {
               name="todoComplete"
               checked={item.todoComplete}
               onChange={(event) => handleToggleComplete(event, item)}
-              inputProps={{ "aria-label": "todo complete" }}
+              inputProps={{ "aria-label": t("todo-complete") }}
             />
             <IconButton
               sx={{ width: "48px", height: "48px" }}
               edge="end"
-              aria-label="edit"
+              aria-label={t("edit")}
               onClick={() => handleEdit(item)}
             >
               <Edit />
@@ -34,7 +39,7 @@ function TodoListItem({ item, onUpdate, onDelete, setEditingId }) {
             <IconButton
               sx={{ width: "48px", height: "48px" }}
               edge="end"
-              aria-label="delete"
+              aria-label={t("delete")}
               onClick={() => onDelete(item.id)}
             >
               <Delete />
@@ -44,7 +49,7 @@ function TodoListItem({ item, onUpdate, onDelete, setEditingId }) {
       >
         <ListItemText
           primary={item.description}
-          secondary={item.todoComplete ? "Is complete" : "Have to be done"}
+          secondary={item.todoComplete ? t("done") : t("undone")}
         />
       </ListItem>
     </>
