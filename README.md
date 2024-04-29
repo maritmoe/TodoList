@@ -22,3 +22,7 @@
 ### Frontend components and icons
 
 - React components and icons installed from Material UI with command `npm install @mui/material @emotion/react @emotion/styled @mui/icons-material`.
+
+### Frontend Translations
+
+- Uses i18n to add translation functionality, dependencies were added with `npm install --save react-i18next i18next`.
