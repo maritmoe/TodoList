@@ -52,6 +52,13 @@ function TodoList({ name, data, onCreate, onUpdate, onDelete, error }) {
     setEditingId(null);
   };
 
+  const getFilteredTodos = () => {
+    if (showComplete) {
+      return data;
+    }
+    return data.filter((item) => !item.todoComplete);
+  };
+
   const handleToggleComplete = (event, item) => {
     const { name, checked } = event.target;
     onUpdate({ ...item, [name]: checked });
@@ -121,79 +128,40 @@ function TodoList({ name, data, onCreate, onUpdate, onDelete, error }) {
         <MenuItem value={false}>Show non complete</MenuItem>
       </Select>
       <List sx={{ width: "100%", maxWidth: 360 }}>
-        {showComplete
-          ? data.map((item) => (
-              <ListItem
-                key={item.id}
-                secondaryAction={
-                  <>
-                    <Switch
-                      name="todoComplete"
-                      checked={item.todoComplete}
-                      onChange={(event) => handleToggleComplete(event, item)}
-                      inputProps={{ "aria-label": "todo complete" }}
-                    />
-                    <IconButton
-                      edge="end"
-                      aria-label="edit"
-                      onClick={() => handleEdit(item)}
-                    >
-                      <Edit />
-                    </IconButton>
-                    <IconButton
-                      edge="end"
-                      aria-label="delete"
-                      onClick={() => onDelete(item.id)}
-                    >
-                      <Delete />
-                    </IconButton>
-                  </>
-                }
-              >
-                <ListItemText
-                  primary={item.description}
-                  secondary={
-                    item.todoComplete ? "Is complete" : "Have to be done"
-                  }
+        {getFilteredTodos().map((item) => (
+          <ListItem
+            key={item.id}
+            secondaryAction={
+              <>
+                <Switch
+                  name="todoComplete"
+                  checked={item.todoComplete}
+                  onChange={(event) => handleToggleComplete(event, item)}
+                  inputProps={{ "aria-label": "todo complete" }}
                 />
-              </ListItem>
-            ))
-          : data.map(
-              (item) =>
-                !item.todoComplete && (
-                  <ListItem
-                    key={item.id}
-                    secondaryAction={
-                      <>
-                        <Switch
-                          name="todoComplete"
-                          checked={item.todoComplete}
-                          onChange={(event) =>
-                            handleToggleComplete(event, item)
-                          }
-                          inputProps={{ "aria-label": "todo complete" }}
-                        />
-                        <IconButton
-                          edge="end"
-                          aria-label="edit"
-                          onClick={() => handleEdit(item)}
-                        >
-                          <Edit />
-                        </IconButton>
-                        <IconButton
-                          edge="end"
-                          aria-label="delete"
-                          onClick={() => onDelete(item.id)}
-                        >
-                          <Delete />
-                        </IconButton>
-                      </>
-                    }
-                  >
-                    <ListItemText primary={item.description} />
-                  </ListItem>
-                )
-            )}
+                <IconButton
+                  edge="end"
+                  aria-label="edit"
+                  onClick={() => handleEdit(item)}
+                >
+                  <Edit />
+                </IconButton>
+                <IconButton
+                  edge="end"
+                  aria-label="delete"
+                  onClick={() => onDelete(item.id)}
+                >
+                  <Delete />
+                </IconButton>
+              </>
+            }
+          >
+            <ListItemText
+              primary={item.description}
+              secondary={item.todoComplete ? "Is complete" : "Have to be done"}
+            />
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
