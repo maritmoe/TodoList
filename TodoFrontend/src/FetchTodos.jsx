@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import TodoList from "./TodoList";
+import Dashboard from "./Dashboard";
 
-const term = "Todo";
 const API_URL = "http://localhost:5146/todos";
 const headers = {
   "Content-Type": "application/json",
@@ -62,10 +61,8 @@ function Todos() {
 
   return (
     <div>
-      {" "}
       {data && (
-        <TodoList
-          name={term}
+        <Dashboard
           data={data}
           error={error}
           onCreate={handleCreate}
